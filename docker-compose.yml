@@ -1,0 +1,19 @@
+version: "3.9"
+networks:
+  vuego-network:
+    driver: bridge
+services:
+  frontend:
+    image: salitomeyo/vuego-demo-frontend:latest
+    build: ./spa
+    ports:
+      - 5000:80
+    networks:
+      - vuego-network
+  backend:
+    image: salitomeyo/vuego-demo-backend:latest
+    build: ./server
+    ports:
+      - 4000:4000
+    networks:
+      - vuego-network
